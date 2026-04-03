@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+function get_current_workspace_id {
+  niri msg --json focused-window | jq -r '.workspace_id // empty'
+}
+
+function get_firefox_window_id {
+  local -r workspace_id="${1:?}"
+  niri msg --json windows | jq -r --arg wid "$workspace_id" '
+    .[] |
+    select(.workspace_id == ($wid | tonumber) and (.app_id | test("firefox"; "i")))
+    | .id' | head -n1
+}
+
+WORKSPACE_ID="$(get_current_workspace_id)"
+WIN_ID="$(get_firefox_window_id "$WORKSPACE_ID")"
+
+if [[ -n "$WIN_ID" ]]; then
+  niri msg action focus-window --id "$WIN_ID"
+  firefox --new-tab "$@"
+else
+  firefox --new-window "$@"
+fi

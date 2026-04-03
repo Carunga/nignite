@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=nignite the fox
+Comment=Browse the World Wide Web and stay sane
+GenericName=Web Browser
+Exec=nignite %u
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+NoDisplay=true
+StartupNotify=true
+MimeType=x-scheme-handler/unknown;x-scheme-handler/about;text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;
