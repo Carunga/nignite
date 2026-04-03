@@ -1,6 +1,6 @@
 # Nignite (the fox)
 
-> A port of [ignite (the fox)](https://github.com/73/ignite) by [73](https://github.com/73) for niri
+> Port of [ignite (the fox)](https://github.com/73/ignite) by [73](https://github.com/73) for niri
 
 A Firefox launcher script for [niri](https://github.com/niri-wm/niri) that opens URLs in the current workspace.
 
@@ -20,9 +20,31 @@ This prevents Firefox from randomly opening on another workspace.
 
 ## Installation
 
+### Manual
+
+1. Copy `nignite` to your PATH:
+   ```bash
+   cp nignite ~/.local/bin/
+   chmod +x ~/.local/bin/nignite
+   ```
+
+2. Copy `nignite.desktop`:
+   ```bash
+   cp nignite.desktop ~/.local/share/applications/
+   ```
+
+3. Set as default browser:
+   ```bash
+   xdg-settings set default-web-browser nignite.desktop
+   ```
+
 ### Nix (Home Manager)
 
+Make sure the scrip nignite is executalbe and in your "path".
+
+This is in my home.nix:
 ```nix
+
 xdg.desktopEntries.nignite = {
   name = "Nignite the fox";
   genericName = "Web Browser";
@@ -48,23 +70,5 @@ xdg.mimeApps.defaultApplications = {
   "x-scheme-handler/unknown" = "nignite.desktop";
 };
 ```
-
-### Manual
-
-1. Copy `nignite` to your PATH:
-   ```bash
-   cp nignite ~/.local/bin/
-   chmod +x ~/.local/bin/nignite
-   ```
-
-2. Copy `nignite.desktop`:
-   ```bash
-   cp nignite.desktop ~/.local/share/applications/
-   ```
-
-3. Set as default browser:
-   ```bash
-   xdg-settings set default-web-browser nignite.desktop
-   ```
 
 
